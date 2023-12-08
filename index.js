@@ -6,7 +6,14 @@ const getInputValueById = (id) => {
 }
 
 const localStoregeElement = () => {
-    const productName = getInputValueById("product-name");
-    const productNumber = getInputValueById("product-number");
-    console.log(productName, productNumber);
+    const product = getInputValueById("product-name");
+    const number = getInputValueById("product-number");
+    // localStorage.setItem(productName, productNumber);
+    const listItems = getItemsFromLocalStorage();
+    listItems.push({ product, number });
+    localStorage.setItem("listItems", JSON.stringify(listItems));
+    console.log(listItems);
+}
+const getItemsFromLocalStorage = () => {
+    return localStorage.getItem("listItems") ? JSON.parse(localStorage.getItem("listItems")) : [];
 }
