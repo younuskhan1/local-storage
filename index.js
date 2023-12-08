@@ -5,13 +5,15 @@ const getInputValueById = (id) => {
     return inputText;
 }
 
-const getElementsOflocalStorege = () => {
+const getElementsOflocalStorage = () => {
 
     const product = getInputValueById("product-name");
     const number = getInputValueById("product-number");
 
     if (product === "" || number === "") {
         return alert("Please fill up the input fields at first");
+    } else if (!isNaN(product) || isNaN(number)) {
+        return alert("product field receives a textual value and number field receives numeric value");
     }
     setElementsOfLocalStorage(product, number);
 }
