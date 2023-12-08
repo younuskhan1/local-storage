@@ -5,15 +5,46 @@ const getInputValueById = (id) => {
     return inputText;
 }
 
-const localStoregeElement = () => {
+const getElementsOflocalStorege = () => {
+
     const product = getInputValueById("product-name");
     const number = getInputValueById("product-number");
-    // localStorage.setItem(productName, productNumber);
+
+    if (product === "" || number === "") {
+        return alert("Please fill up the input fields at first");
+    }
+    setElementsOfLocalStorage(product, number);
+}
+
+const setElementsOfLocalStorage = (product, number) => {
+
     const listItems = getItemsFromLocalStorage();
     listItems.push({ product, number });
     localStorage.setItem("listItems", JSON.stringify(listItems));
-    console.log(listItems);
+    // console.log(listItems);
+    displayDataFromLS();
 }
+
+
+const dataContainer = document.getElementById("data-container");
+
+const displayDataFromLS = () => {
+    const localStorageData = getItemsFromLocalStorage();
+    dataContainer.innerText = "";
+    localStorageData.forEach(data => {
+        // console.log(data);
+        const serial = dataContainer.childElementCount;
+        const dataLi = document.createElement("li");
+        dataLi.classList.add("data-list");
+        dataLi.innerText = `${serial + 1}. ${data.product} = ${data.number}`;
+        dataContainer.appendChild(dataLi);
+    })
+
+}
+
 const getItemsFromLocalStorage = () => {
     return localStorage.getItem("listItems") ? JSON.parse(localStorage.getItem("listItems")) : [];
 }
+
+// window.addEventListener("DOMContentLoaded", displayDataFromLS);
+displayDataFromLS();
