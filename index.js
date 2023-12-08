@@ -45,6 +45,11 @@ const displayDataFromLS = () => {
 const getItemsFromLocalStorage = () => {
     return localStorage.getItem("listItems") ? JSON.parse(localStorage.getItem("listItems")) : [];
 }
+// To show the elements of local storage you have two options :
+// The first one : you can add eventListener to the browser like below.
 
 // window.addEventListener("DOMContentLoaded", displayDataFromLS);
+
+// The second one : you can call the function globally by default like below.
+
 displayDataFromLS();
