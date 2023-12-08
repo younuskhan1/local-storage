@@ -11,9 +11,9 @@ const getElementsOflocalStorage = () => {
     const number = getInputValueById("product-number");
 
     if (product === "" || number === "") {
-        return alert("Please fill up the input fields at first");
+        return alert("Please fill up the input fields at first.");
     } else if (!isNaN(product) || isNaN(number)) {
-        return alert("product field receives a textual value and number field receives numeric value");
+        return alert("product name field receives a textual value and product number field receives a numeric value.");
     }
     setElementsOfLocalStorage(product, number);
 }
@@ -41,7 +41,6 @@ const displayDataFromLS = () => {
         dataLi.innerText = `${serial + 1}. ${data.product} = ${data.number}`;
         dataContainer.appendChild(dataLi);
     })
-
 }
 
 const getItemsFromLocalStorage = () => {
